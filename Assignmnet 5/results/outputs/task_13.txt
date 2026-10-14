@@ -1,0 +1,13 @@
+=== Part B: Task 13: Retrieve All Students Enrolled in NoSQL Databases Along with Their Semester and Grade ===
+
+Query:
+MATCH (s:Student)-[r:ENROLLED_IN]->(c:Course {courseTitle: 'NoSQL Databases'})
+RETURN s.studentId AS StudentID, s.name AS Name, r.semesterEnrolled AS SemesterEnrolled, r.grade AS Grade, c.courseTitle AS Course;
+
+Results:
+StudentID | Name | SemesterEnrolled | Grade | Course
+------------------------------------------------------------
+S101 | Aarav Sharma | 5 | Not Published | NoSQL Databases
+S104 | Sneha Roy | 3 | Not Published | NoSQL Databases
+
+Screenshot: results/screenshots/task13_students_enrolled_in_nosql_databases.png

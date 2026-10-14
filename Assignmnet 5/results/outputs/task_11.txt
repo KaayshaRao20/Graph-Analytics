@@ -1,0 +1,14 @@
+=== Part B: Task 11: Display the Names of All Students Belonging to the Computer Science Department ===
+
+Query:
+MATCH (s:Student)-[:BELONGS_TO]->(d:Department {deptName: 'Computer Science'})
+RETURN s.studentId AS StudentID, s.name AS StudentName, d.deptName AS Department;
+
+Results:
+StudentID | StudentName | Department
+------------------------------------------------------------
+S101 | Aarav Sharma | Computer Science
+S102 | Priya Das | Computer Science
+S103 | Rahul Verma | Computer Science
+
+Screenshot: results/screenshots/task11_students_belonging_to_computer_science.png

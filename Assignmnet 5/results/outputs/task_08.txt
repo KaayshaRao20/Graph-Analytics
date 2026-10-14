@@ -1,0 +1,14 @@
+=== Part B: Task 8: Find All Courses with More Than 3 Credits ===
+
+Query:
+MATCH (c:Course)
+WHERE c.credits > 3
+RETURN c.courseCode AS CourseCode, c.courseTitle AS CourseTitle, c.credits AS Credits, c.level AS Level;
+
+Results:
+CourseCode | CourseTitle | Credits | Level
+------------------------------------------------------------
+CS302 | Database Management Systems | 4 | Core
+CS304 | Big Data Analytics | 4 | Advanced
+
+Screenshot: results/screenshots/task08_courses_credits_greater_than_3.png

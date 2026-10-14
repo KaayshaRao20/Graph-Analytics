@@ -1,0 +1,14 @@
+=== Part B: Task 10: Find All Students Enrolled in Graph Analytics ===
+
+Query:
+MATCH (s:Student)-[:ENROLLED_IN]->(c:Course {courseTitle: 'Graph Analytics'})
+RETURN s.studentId AS StudentID, s.name AS Name, s.semester AS Semester, c.courseTitle AS EnrolledCourse;
+
+Results:
+StudentID | Name | Semester | EnrolledCourse
+------------------------------------------------------------
+S101 | Aarav Sharma | 5 | Graph Analytics
+S102 | Priya Das | 5 | Graph Analytics
+S105 | Arjun Patel | 5 | Graph Analytics
+
+Screenshot: results/screenshots/task10_students_enrolled_in_graph_analytics.png

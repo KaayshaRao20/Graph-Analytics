@@ -1,0 +1,18 @@
+=== Part B: Task 14: Find All Students Enrolled in Both Graph Analytics and Another Course ===
+
+Query:
+MATCH (s:Student)-[:ENROLLED_IN]->(c1:Course {courseTitle: 'Graph Analytics'}),
+      (s)-[:ENROLLED_IN]->(c2:Course)
+WHERE c1 <> c2
+RETURN s.studentId AS StudentID, s.name AS StudentName, c2.courseCode AS OtherCourseCode, c2.courseTitle AS OtherCourseTitle
+ORDER BY s.studentId, c2.courseCode;
+
+Results:
+StudentID | StudentName | OtherCourseCode | OtherCourseTitle
+------------------------------------------------------------
+S101 | Aarav Sharma | CS302 | Database Management Systems
+S101 | Aarav Sharma | CS305 | NoSQL Databases
+S102 | Priya Das | CS303 | Data Mining
+S105 | Arjun Patel | CS304 | Big Data Analytics
+
+Screenshot: results/screenshots/task14_students_in_graph_analytics_and_another_course.png

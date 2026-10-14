@@ -1,0 +1,13 @@
+=== Part B: Task 12: Find All Courses Offered by the Information Technology Department ===
+
+Query:
+MATCH (d:Department {deptName: 'Information Technology'})-[:OFFERS]->(c:Course)
+RETURN d.deptName AS Department, c.courseCode AS CourseCode, c.courseTitle AS CourseTitle, c.credits AS Credits, c.level AS Level;
+
+Results:
+Department | CourseCode | CourseTitle | Credits | Level
+------------------------------------------------------------
+Information Technology | CS301 | Graph Analytics | 3 | Advanced
+Information Technology | CS304 | Big Data Analytics | 4 | Advanced
+
+Screenshot: results/screenshots/task12_courses_offered_by_information_technology.png

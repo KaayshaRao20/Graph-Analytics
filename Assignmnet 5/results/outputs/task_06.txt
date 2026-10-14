@@ -1,0 +1,16 @@
+=== Part A: Task 6: Display All Relationship Types and Verify Their Directions ===
+
+Query:
+MATCH (a)-[r]->(b)
+RETURN DISTINCT type(r) AS RelationshipType, labels(a)[0] AS FromNode, labels(b)[0] AS ToNode, count(r) AS Count
+ORDER BY RelationshipType;
+
+Results:
+RelationshipType | FromNode | ToNode | Count
+------------------------------------------------------------
+BELONGS_TO | Student | Department | 5
+ENROLLED_IN | Student | Course | 11
+OFFERS | Department | Course | 5
+TEACHES | Faculty | Course | 5
+
+Screenshot: results/screenshots/task06_relationship_types_and_directions.png

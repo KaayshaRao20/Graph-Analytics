@@ -1,0 +1,61 @@
+=== Part A: Tasks 1 to 3: Graph Creation, Relationships, and Properties ===
+
+Query:
+// 1. Create Nodes
+CREATE 
+  (s1:Student {studentId: 'S101', name: 'Aarav Sharma', semester: 5, email: 'aarav@univ.edu'}),
+  (s2:Student {studentId: 'S102', name: 'Priya Das', semester: 5, email: 'priya@univ.edu'}),
+  (s3:Student {studentId: 'S103', name: 'Rahul Verma', semester: 3, email: 'rahul@univ.edu'}),
+  (s4:Student {studentId: 'S104', name: 'Sneha Roy', semester: 3, email: 'sneha@univ.edu'}),
+  (s5:Student {studentId: 'S105', name: 'Arjun Patel', semester: 5, email: 'arjun@univ.edu'}),
+  (f1:Faculty {facultyId: 'F101', name: 'Dr. Meera Sen', designation: 'Associate Professor', specialization: 'Database Systems'}),
+  (f2:Faculty {facultyId: 'F102', name: 'Dr. Amit Roy', designation: 'Assistant Professor', specialization: 'Data Analytics'}),
+  (c1:Course {courseCode: 'CS301', courseTitle: 'Graph Analytics', credits: 3, level: 'Advanced'}),
+  (c2:Course {courseCode: 'CS302', courseTitle: 'Database Management Systems', credits: 4, level: 'Core'}),
+  (c3:Course {courseCode: 'CS303', courseTitle: 'Data Mining', credits: 3, level: 'Advanced'}),
+  (c4:Course {courseCode: 'CS304', courseTitle: 'Big Data Analytics', credits: 4, level: 'Advanced'}),
+  (c5:Course {courseCode: 'CS305', courseTitle: 'NoSQL Databases', credits: 3, level: 'Core'}),
+  (d1:Department {deptId: 'D101', deptName: 'Computer Science', building: 'Block A'}),
+  (d2:Department {deptId: 'D102', deptName: 'Information Technology', building: 'Block B'});
+
+// 2 & 3. Create Directed Relationships with Properties
+MATCH (s:Student {studentId: 'S101'}), (d:Department {deptId: 'D101'}) CREATE (s)-[:BELONGS_TO]->(d);
+MATCH (s:Student {studentId: 'S102'}), (d:Department {deptId: 'D101'}) CREATE (s)-[:BELONGS_TO]->(d);
+MATCH (s:Student {studentId: 'S103'}), (d:Department {deptId: 'D101'}) CREATE (s)-[:BELONGS_TO]->(d);
+MATCH (s:Student {studentId: 'S104'}), (d:Department {deptId: 'D102'}) CREATE (s)-[:BELONGS_TO]->(d);
+MATCH (s:Student {studentId: 'S105'}), (d:Department {deptId: 'D102'}) CREATE (s)-[:BELONGS_TO]->(d);
+
+MATCH (d:Department {deptId: 'D101'}), (c:Course {courseCode: 'CS302'}) CREATE (d)-[:OFFERS]->(c);
+MATCH (d:Department {deptId: 'D101'}), (c:Course {courseCode: 'CS303'}) CREATE (d)-[:OFFERS]->(c);
+MATCH (d:Department {deptId: 'D101'}), (c:Course {courseCode: 'CS305'}) CREATE (d)-[:OFFERS]->(c);
+MATCH (d:Department {deptId: 'D102'}), (c:Course {courseCode: 'CS301'}) CREATE (d)-[:OFFERS]->(c);
+MATCH (d:Department {deptId: 'D102'}), (c:Course {courseCode: 'CS304'}) CREATE (d)-[:OFFERS]->(c);
+
+MATCH (f:Faculty {facultyId: 'F101'}), (c:Course {courseCode: 'CS302'}) CREATE (f)-[:TEACHES {academicYear: '2026-27'}]->(c);
+MATCH (f:Faculty {facultyId: 'F101'}), (c:Course {courseCode: 'CS305'}) CREATE (f)-[:TEACHES {academicYear: '2026-27'}]->(c);
+MATCH (f:Faculty {facultyId: 'F102'}), (c:Course {courseCode: 'CS301'}) CREATE (f)-[:TEACHES {academicYear: '2026-27'}]->(c);
+MATCH (f:Faculty {facultyId: 'F102'}), (c:Course {courseCode: 'CS303'}) CREATE (f)-[:TEACHES {academicYear: '2026-27'}]->(c);
+MATCH (f:Faculty {facultyId: 'F102'}), (c:Course {courseCode: 'CS304'}) CREATE (f)-[:TEACHES {academicYear: '2026-27'}]->(c);
+
+MATCH (s:Student {studentId: 'S101'}), (c:Course {courseCode: 'CS301'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+MATCH (s:Student {studentId: 'S101'}), (c:Course {courseCode: 'CS302'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+MATCH (s:Student {studentId: 'S101'}), (c:Course {courseCode: 'CS305'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+
+MATCH (s:Student {studentId: 'S102'}), (c:Course {courseCode: 'CS301'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+MATCH (s:Student {studentId: 'S102'}), (c:Course {courseCode: 'CS303'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+
+MATCH (s:Student {studentId: 'S103'}), (c:Course {courseCode: 'CS302'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 3, grade: 'Not Published'}]->(c);
+MATCH (s:Student {studentId: 'S103'}), (c:Course {courseCode: 'CS304'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 3, grade: 'Not Published'}]->(c);
+
+MATCH (s:Student {studentId: 'S104'}), (c:Course {courseCode: 'CS303'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 3, grade: 'Not Published'}]->(c);
+MATCH (s:Student {studentId: 'S104'}), (c:Course {courseCode: 'CS305'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 3, grade: 'Not Published'}]->(c);
+
+MATCH (s:Student {studentId: 'S105'}), (c:Course {courseCode: 'CS301'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+MATCH (s:Student {studentId: 'S105'}), (c:Course {courseCode: 'CS304'}) CREATE (s)-[:ENROLLED_IN {semesterEnrolled: 5, grade: 'Not Published'}]->(c);
+
+Results:
+Execution Summary
+------------------------------------------------------------
+Added 14 labels, created 14 nodes, set 42 properties, created 26 relationships, completed successfully.
+
+Screenshot: results/screenshots/task01_to_03_graph_creation_and_properties.png

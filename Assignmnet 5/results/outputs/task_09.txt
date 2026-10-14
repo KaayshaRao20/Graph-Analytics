@@ -1,0 +1,13 @@
+=== Part B: Task 9: Retrieve the Courses Taught by Dr. Meera Sen ===
+
+Query:
+MATCH (f:Faculty {name: 'Dr. Meera Sen'})-[:TEACHES]->(c:Course)
+RETURN f.name AS FacultyName, c.courseCode AS CourseCode, c.courseTitle AS CourseTitle, c.credits AS Credits;
+
+Results:
+FacultyName | CourseCode | CourseTitle | Credits
+------------------------------------------------------------
+Dr. Meera Sen | CS302 | Database Management Systems | 4
+Dr. Meera Sen | CS305 | NoSQL Databases | 3
+
+Screenshot: results/screenshots/task09_courses_taught_by_dr_meera_sen.png

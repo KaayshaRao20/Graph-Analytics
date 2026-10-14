@@ -1,0 +1,16 @@
+=== Part A: Task 5: Count the Number of Nodes Belonging to Each Label ===
+
+Query:
+MATCH (n)
+RETURN labels(n)[0] AS Label, count(n) AS NodeCount
+ORDER BY NodeCount DESC;
+
+Results:
+Label | NodeCount
+------------------------------------------------------------
+Student | 5
+Course | 5
+Faculty | 2
+Department | 2
+
+Screenshot: results/screenshots/task05_node_counts_by_label.png

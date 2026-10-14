@@ -1,0 +1,12 @@
+=== Part A: Task 4: Display the Complete Graph ===
+
+Query:
+MATCH (n)-[r]->(m)
+RETURN n, r, m;
+
+Results:
+Node Count | Relationship Count | Visualization
+------------------------------------------------------------
+14 nodes (5 Student, 2 Faculty, 5 Course, 2 Department) | 26 relationships (11 ENROLLED_IN, 5 TEACHES, 5 BELONGS_TO, 5 OFFERS) | Rendered full topological property graph
+
+Screenshot: results/screenshots/task04_complete_graph_visualization.png
